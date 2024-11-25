@@ -1,1 +1,31 @@
-//Placeholder
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 672px;
+    height: 672px;
+    background-color: rgba(0, 0, 0, 0.87);
+}
+
+.body {
+    padding-left: 530px; 
+}
+
+.text {
+    padding-right: 530px;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#button {
+    width: 130px;
+    height: auto;
+    color: red;
+    background-color: black;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}
