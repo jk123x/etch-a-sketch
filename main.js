@@ -3,9 +3,18 @@ for (let i = 0; i < 256; i++) {
     div.style.width = "40px";
     div.style.height = "40px";
     div.style.background = "black";
+    div.style.border = "1px solid eggshell";
     document.getElementById("container").appendChild(div);
 }
+
+
 const gridItems = document.querySelectorAll("square");
+
+gridItems.forEach((div) => {
+div.addEventListener("mouseover", () => {
+    div.style.backgroundColor = randomColor();
+});
+});
 
 function randomColor() {
     let color = [];
@@ -15,63 +24,50 @@ function randomColor() {
     return 'rgb(' + color.join(', ') + ')';
 }
 
-gridItems.forEach((div) => {
-div.addEventListener("mouseover", () => {
-    div.style.backgroundColor = randomColor();
-});
-});
-
 const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
         const userInput = prompt("Let's redesign the grid! Enter a number from 1-100:");
         const parsedInput = parseInt(userInput);
-        const userInputSquared = (parsedInput * parsedInput);
-        console.log(userInputSquared);
-        
-        container.innerHTML = "";
-        if (0 < userInput && userInput <= 100) {
-            clearGrid(); 
-            createGrid();
-            function createGrid(userInputSquared) {
-                for (let i = 0; i < userInputSquared; i++) {
-                    const gridCell = document.createElement("div");
-                    const gridsize = 672;
-                    const widthOrHeight = `${(gridsize / parsedInput) - 2}px`;
-                    const sketchArea = document.querySelector("container");
-                    sketchArea.style.width = `${gridsize}px`;
-                    sketchArea.style.height = `${gridsize}px`;
-                    gridCell.style.width = gridCell.style.height = widthOrHeight;
-                    container.appendChild(gridCell);
-                    gridCell.forEach((div) => {
-                        div.addEventListener("mouseover", () => {
-                            div.style.backgroundColor = randomColor();
-                        });
-                    });
-                }
-            }
+        if (userInput > 100) {
+            alert("Please choose a number from 1-100 :)")   
         } else {
-            alert("Only type numbers from 1-100");
+            clearGrid(); 
         }
+        createGrid(parsedInput); 
         });
-      
-function clearGrid() {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
+
+function clearGrid(){
+    for (let i = 0; i < 256; i++) {
+    while (container.firstChild) 
+    container.removeChild(container.firstChild);
+        }
     }
-}
+
+function createGrid(parsedInput) {
+    for (let i = 0; i < parsedInput ** 2; i++) {
+        var div = document.createElement("square");
+        div.id = "square";
+        div.style.width = (672 / parsedInput) - 2 + "px";
+        div.style.height = (672 / parsedInput) - 2 + "px";
+        div.style.background = "eggshell";
+        div.style.border = "1px solid black";
+        document.getElementById("container").appendChild(div);
+    }
+        document.querySelectorAll("square").forEach((div) => {
+            div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = randomColor();
+            })
+        })
+    };
+        
+
+
+      
+
     
 
       
-//document.getElementById("container").appendChild(div);
 
-            //for (let i = 0; i < userInputSquared; i++) {
-                //var div = document.createElement("square");
-                //div.style.width = "100vh";
-                //div.style.height = "100vh";
-                //div.style.background = "black";
-                //document.getElementById("container").appendChild(div);
-           //}
-        //});
 
     
