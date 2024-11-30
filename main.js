@@ -1,3 +1,4 @@
+// for loop to create the initial grid
 for (let i = 0; i < 256; i++) {
     var div = document.createElement("square");
     div.style.width = "40px";
@@ -7,15 +8,15 @@ for (let i = 0; i < 256; i++) {
     document.getElementById("container").appendChild(div);
 }
 
-
+// event listeners to trigger div colour randomisation upon mouseover
 const gridItems = document.querySelectorAll("square");
-
 gridItems.forEach((div) => {
 div.addEventListener("mouseover", () => {
     div.style.backgroundColor = randomColor();
 });
 });
 
+// function to randomise the colour
 function randomColor() {
     let color = [];
     for (let i = 0; i < 3; i++) {
@@ -24,8 +25,8 @@ function randomColor() {
     return 'rgb(' + color.join(', ') + ')';
 }
 
+// prompt to get user input to determine resizing of the grid divs
 const button = document.querySelector("button");
-
 button.addEventListener("click", () => {
         const userInput = prompt("Let's redesign the grid! Enter a number from 1-100:");
         const parsedInput = parseInt(userInput);
@@ -37,6 +38,7 @@ button.addEventListener("click", () => {
         createGrid(parsedInput); 
         });
 
+// clears the old grid to be replaced by the new one
 function clearGrid(){
     for (let i = 0; i < 256; i++) {
     while (container.firstChild) 
@@ -44,6 +46,8 @@ function clearGrid(){
         }
     }
 
+// creates the new grid based on used input, and re-adds the event listeners 
+// to randomise div colour upon mouseover trigger    
 function createGrid(parsedInput) {
     for (let i = 0; i < parsedInput ** 2; i++) {
         var div = document.createElement("square");
